@@ -27,12 +27,11 @@ void main()
 
     if (u_swayStrength > 0.0001)
     {
-        float w = u_swayStrength;
         float weight = clamp(abs(aPos.y), 0.0, 1.0);
         float s1 = sin(u_time * 1.6 + aPos.y * 2.2);
         float s2 = cos(u_time * 1.2 + aPos.y * 1.7);
-        pos.x += s1 * w * weight;
-        pos.z += s2 * w * 0.7 * weight;
+        pos.x += s1 * u_swayStrength * weight;
+        pos.z += s2 * u_swayStrength * 0.7 * weight;
     }
 
     vec4 world = u_model * vec4(pos, 1.0);
